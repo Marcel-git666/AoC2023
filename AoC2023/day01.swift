@@ -45,7 +45,7 @@ func day01Part2(_ input: String) -> Int {
             if let range = line.range(of: substring) {
 //                print("Substring found in range: \(range.lowerBound) to \(range.upperBound)")
                 let startIndex = line.distance(from: line.startIndex, to: range.lowerBound)
-                let endIndex = line.distance(from: line.startIndex, to: range.upperBound)
+                _ = line.distance(from: line.startIndex, to: range.upperBound)
 //                print("Substring found at indices: \(startIndex) to \(endIndex)")
                 let foundSubstring = line[range]
 //                print("Found substring: \(foundSubstring)")
@@ -56,7 +56,7 @@ func day01Part2(_ input: String) -> Int {
 //        print("First substring is \(firstSubstring)")
         if  let minKeyValuePair = firstSubstring.min(by: { $0.value < $1.value }) {
             let minKey = minKeyValuePair.key
-            let minValue = minKeyValuePair.value
+            _ = minKeyValuePair.value
 //            print("Min value is \(minValue)")
             let foundInt = Int(minKey) ?? 0
             let convertedNumber = convertToNumeric(String(minKey)) ?? 0
@@ -86,7 +86,7 @@ func day01Part2(_ input: String) -> Int {
 //        print("Last substring is \(lastSubstring)")
         if let maxKeyValuePair = lastSubstring.max(by: { $0.value < $1.value }) {
             let maxKey = maxKeyValuePair.key
-            let maxValue = maxKeyValuePair.value
+            _ = maxKeyValuePair.value
 //            print("Max value is \(maxValue)")
             let foundInt = Int(maxKey) ?? 0
             let convertedNumber = convertToNumeric(String(maxKey)) ?? 0
