@@ -39,6 +39,29 @@ func day04Part1(_ input: String) -> Int {
 }
 
 func day04Part2(_ input: String) -> Int {
-    
-    return 2
+    let lines = input.lines
+    var scratchCards: [Int] = Array(repeating: 1, count: lines.count)
+    for (i, line) in lines.enumerated() {
+        let parts = line.components(separatedBy: ":").dropFirst()
+        let ticket = parts[1].components(separatedBy: "|")
+        let winningNumbers = ticket[0].components(separatedBy: " ").compactMap { Int($0) }
+        let winningNumbersSet = Set(winningNumbers)
+        let myNumbers = ticket[1].components(separatedBy: " ").compactMap { Int($0) }
+        let myNumbersSet = Set(myNumbers)
+        let repeatingNumbers = winningNumbersSet.intersection(myNumbersSet)
+        var cardsWon: Int = 0
+        for _ in 0..<scratchCards[i]  {
+            if i+repeatingNumbers.count < lines.count {
+                cardsWon = i+repeatingNumbers.count
+            } else {
+                cardsWon = lines.count - 1
+            }
+            if (i < lines.count - 2) && !repeatingNumbers.isEmpty {
+                for k in (i+1)...cardsWon {
+                    scratchCards[k] += 1
+                }
+            }
+        }
+    }
+    return scratchCards.reduce(0, +)
 }
