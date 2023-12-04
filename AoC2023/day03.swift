@@ -43,31 +43,31 @@ func day03Part1(_ input: String) -> Int {
         }
         partsArray.append(row)
     }
-
+    
     // Print the result using CustomStringConvertible
     for row in partsArray {
         print(row.map { $0.description }.joined(), terminator: "\n")
     }
-
+    
     for (rowIndex, row) in partsArray.enumerated() {
         var lastNumber: Int?
         for (colIndex, part) in row.enumerated() {
             if row[colIndex].isNumber {
                 var isConnected = false
-
+                
                 if let lastNumber = lastNumber, colIndex > 0, row[colIndex - 1].isConnected {
                     isConnected = true
                 } else if (rowIndex > 0 && symbols.contains(partsArray[rowIndex - 1][colIndex].value.unicodeScalars.first!)) ||
-                          (rowIndex < partsArray.count - 1 && symbols.contains(partsArray[rowIndex + 1][colIndex].value.unicodeScalars.first!)) ||
-                          (colIndex > 0 && symbols.contains(partsArray[rowIndex][colIndex - 1].value.unicodeScalars.first!)) ||
-                          (colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex][colIndex + 1].value.unicodeScalars.first!)) ||
-                          (rowIndex > 0 && colIndex > 0 && symbols.contains(partsArray[rowIndex - 1][colIndex - 1].value.unicodeScalars.first!)) ||
-                          (rowIndex > 0 && colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex - 1][colIndex + 1].value.unicodeScalars.first!)) ||
-                          (rowIndex < partsArray.count - 1 && colIndex > 0 && symbols.contains(partsArray[rowIndex + 1][colIndex - 1].value.unicodeScalars.first!)) ||
-                          (rowIndex < partsArray.count - 1 && colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex + 1][colIndex + 1].value.unicodeScalars.first!)) {
+                            (rowIndex < partsArray.count - 1 && symbols.contains(partsArray[rowIndex + 1][colIndex].value.unicodeScalars.first!)) ||
+                            (colIndex > 0 && symbols.contains(partsArray[rowIndex][colIndex - 1].value.unicodeScalars.first!)) ||
+                            (colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex][colIndex + 1].value.unicodeScalars.first!)) ||
+                            (rowIndex > 0 && colIndex > 0 && symbols.contains(partsArray[rowIndex - 1][colIndex - 1].value.unicodeScalars.first!)) ||
+                            (rowIndex > 0 && colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex - 1][colIndex + 1].value.unicodeScalars.first!)) ||
+                            (rowIndex < partsArray.count - 1 && colIndex > 0 && symbols.contains(partsArray[rowIndex + 1][colIndex - 1].value.unicodeScalars.first!)) ||
+                            (rowIndex < partsArray.count - 1 && colIndex < row.count - 1 && symbols.contains(partsArray[rowIndex + 1][colIndex + 1].value.unicodeScalars.first!)) {
                     isConnected = true
                 }
-
+                
                 partsArray[rowIndex][colIndex].isConnected = isConnected
             }
             lastNumber = nil
@@ -117,22 +117,60 @@ func day03Part1(_ input: String) -> Int {
     
     let sum = connectedNumbers.reduce(0, +)
     
-        
-        return sum
-    }
     
-    func day03Part2(_ input: String) -> Int {
-        
-        return 2
-    }
-    
-    struct Part: CustomStringConvertible {
-        var isConnected: Bool
-        var isNumber: Bool
-        var isSymbol: Bool
-        var value: Character
-        
-        var description: String {
-            "(\(isConnected ? "T": "F"), \(isNumber ? "T": "F"), \(isSymbol ? "T": "F"), \(value))"
+    return sum
+}
+
+func day03Part2(_ input1: String) -> Int {
+    let input = input1.lines
+    var res = 0
+    for (row, line) in input.enumerated() {
+        var col = 0
+        while col < line.count {
+            let c = line[line.index(line.startIndex, offsetBy: col)]
+            if c.isNumber {
+                let numEndIndex = line.index(line.startIndex, offsetBy: col)
+                let num = String(line[numEndIndex...])
+                    .prefix(while: { $0.isNumber })
+                if isSymbolAround(row: row, col: col, colOffset: num.count, grid: input) {
+                    res += Int(num) ?? 0
+                }
+                col += num.count
+            } else {
+                col += 1
+            }
         }
     }
+    
+    return res
+}
+
+private func isSymbolAround(row: Int, col: Int, colOffset: Int, grid: [String], symbol: Character? = nil) -> Bool {
+    for dr in -1...1 {
+        if row + dr < 0 || row + dr >= grid.count {
+            continue
+        }
+        for dc in -1...colOffset {
+            if col + dc < 0 || col + dc >= grid[row + dr].count {
+                continue
+            }
+            let s = grid[row + dr][grid[row + dr].index(grid[row + dr].startIndex, offsetBy: col + dc)]
+            if (symbol != nil && s == symbol) || s != "." && !s.isNumber {
+                return true
+            }
+        }
+    }
+    
+    return false
+}
+
+struct Part: CustomStringConvertible {
+    var isConnected: Bool
+    var isNumber: Bool
+    var isSymbol: Bool
+    var value: Character
+    
+    var description: String {
+        "(\(isConnected ? "T": "F"), \(isNumber ? "T": "F"), \(isSymbol ? "T": "F"), \(value))"
+    }
+}

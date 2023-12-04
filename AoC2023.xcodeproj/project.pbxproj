@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1282662B1E102000879B28 /* day05.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1282652B1E102000879B28 /* day05.swift */; };
+		1F1282682B1E102800879B28 /* day06.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1282672B1E102800879B28 /* day06.swift */; };
+		1F12826A2B1E102E00879B28 /* day07.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1282692B1E102E00879B28 /* day07.swift */; };
+		1F12826C2B1E103300879B28 /* day08.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12826B2B1E103300879B28 /* day08.swift */; };
+		1F12826E2B1E103A00879B28 /* day09.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12826D2B1E103A00879B28 /* day09.swift */; };
+		1F1282702B1E104000879B28 /* day10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12826F2B1E104000879B28 /* day10.swift */; };
 		1F4589EC2B1A18F300C93873 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4589EB2B1A18F300C93873 /* main.swift */; };
 		1F4589F32B1A194B00C93873 /* day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4589F22B1A194B00C93873 /* day01.swift */; };
 		1F4589F62B1A197300C93873 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4589F52B1A197300C93873 /* utils.swift */; };
@@ -28,6 +34,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F1282652B1E102000879B28 /* day05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day05.swift; sourceTree = "<group>"; };
+		1F1282672B1E102800879B28 /* day06.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day06.swift; sourceTree = "<group>"; };
+		1F1282692B1E102E00879B28 /* day07.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day07.swift; sourceTree = "<group>"; };
+		1F12826B2B1E103300879B28 /* day08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day08.swift; sourceTree = "<group>"; };
+		1F12826D2B1E103A00879B28 /* day09.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day09.swift; sourceTree = "<group>"; };
+		1F12826F2B1E104000879B28 /* day10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day10.swift; sourceTree = "<group>"; };
 		1F4589E82B1A18F300C93873 /* AoC2023 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AoC2023; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4589EB2B1A18F300C93873 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1F4589F22B1A194B00C93873 /* day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day01.swift; sourceTree = "<group>"; };
@@ -80,6 +92,12 @@
 				1F4589FA2B1A1A4900C93873 /* day02.swift */,
 				1F5997D02B1B88150000A17A /* day03.swift */,
 				1F5997D22B1B88230000A17A /* day04.swift */,
+				1F1282652B1E102000879B28 /* day05.swift */,
+				1F1282672B1E102800879B28 /* day06.swift */,
+				1F1282692B1E102E00879B28 /* day07.swift */,
+				1F12826B2B1E103300879B28 /* day08.swift */,
+				1F12826D2B1E103A00879B28 /* day09.swift */,
+				1F12826F2B1E104000879B28 /* day10.swift */,
 				1F4589F42B1A196000C93873 /* Resources */,
 			);
 			path = AoC2023;
@@ -161,10 +179,16 @@
 			files = (
 				1F4589F62B1A197300C93873 /* utils.swift in Sources */,
 				1F5997D12B1B88150000A17A /* day03.swift in Sources */,
+				1F12826C2B1E103300879B28 /* day08.swift in Sources */,
+				1F1282682B1E102800879B28 /* day06.swift in Sources */,
 				1F4589EC2B1A18F300C93873 /* main.swift in Sources */,
+				1F1282702B1E104000879B28 /* day10.swift in Sources */,
 				1F4589FB2B1A1A4900C93873 /* day02.swift in Sources */,
 				1F4589F32B1A194B00C93873 /* day01.swift in Sources */,
+				1F1282662B1E102000879B28 /* day05.swift in Sources */,
 				1F5997D32B1B88230000A17A /* day04.swift in Sources */,
+				1F12826A2B1E102E00879B28 /* day07.swift in Sources */,
+				1F12826E2B1E103A00879B28 /* day09.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
