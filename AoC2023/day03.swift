@@ -26,13 +26,13 @@ func day03Part1(_ input: String) -> Int {
     var partsArray = [[Part]]()
     var connectedNumbers = [Int]()
     
-    for (i, line) in lines.enumerated() {
+    for (_, line) in lines.enumerated() {
         var row = [Part]()
-        for (j, character) in line.enumerated() {
+        for (_, character) in line.enumerated() {
             let isNumber = character.isNumber
             let isSymbol = symbols.contains(character.unicodeScalars.first!)
             
-            var isConnected = false
+            let isConnected = false
             let part = Part(
                 isConnected: isConnected,
                 isNumber: isNumber,
@@ -51,11 +51,12 @@ func day03Part1(_ input: String) -> Int {
     
     for (rowIndex, row) in partsArray.enumerated() {
         var lastNumber: Int?
-        for (colIndex, part) in row.enumerated() {
+        for (colIndex, _) in row.enumerated() {
             if row[colIndex].isNumber {
                 var isConnected = false
                 
                 if let lastNumber = lastNumber, colIndex > 0, row[colIndex - 1].isConnected {
+                    print(lastNumber)
                     isConnected = true
                 } else if (rowIndex > 0 && symbols.contains(partsArray[rowIndex - 1][colIndex].value.unicodeScalars.first!)) ||
                             (rowIndex < partsArray.count - 1 && symbols.contains(partsArray[rowIndex + 1][colIndex].value.unicodeScalars.first!)) ||
@@ -78,7 +79,7 @@ func day03Part1(_ input: String) -> Int {
     for (rowIndex, row) in partsArray.enumerated() {
         var lastNumber: Int?
         var canConnect = false
-        for (colIndex, part) in row.enumerated() {
+        for (colIndex, _) in row.enumerated() {
             if lastNumber != nil {
                 if row[colIndex].isNumber {
                     lastNumber = 10 * lastNumber! + Int(String(row[colIndex].value))!
