@@ -81,7 +81,7 @@ enum Day05 {
         
         let result = day05Part1(seeds: seeds, almanach: almanach)
         print(result)
-        print(day05Part2(input))
+        print(day05Part2(seeds: seeds, almanach: almanach))
     }
 }
 
@@ -90,7 +90,7 @@ func transform(source: Int, page: Page) -> Int {
     var destinationValue = 0
     var isDestinationModified = false
     for r in page.ranges {
-        if (source >= r.sourceRangeStart)  && (source <= (r.sourceRangeStart+r.rangeLength)) {
+        if (source >= r.sourceRangeStart)  && (source <= (r.sourceRangeStart+r.rangeLength - 1)) {
             destinationValue += r.destinationRangeStart + source - r.sourceRangeStart
             isDestinationModified = true
         }
@@ -115,9 +115,29 @@ func day05Part1(seeds: [Int], almanach: [Page]) -> Int {
     return distance.min() ?? 666
 }
 
-func day05Part2(_ input: String) -> Int {
-    
-    return 2
+func day05Part2(seeds: [Int], almanach: [Page]) -> Int {
+    var distance = [Int]()
+    var i = 0
+    while i < seeds.count - 1 {
+        print(i)
+        let seedStart = seeds[i]
+        print("Seed start is \(seedStart)")
+        let seedEnd = seedStart + seeds[i+1] - 1
+        print("Seed end is \(seedEnd)")
+        print("Difference is \(seedEnd-seedStart)")
+        for seed in seedStart...seedEnd {
+            var source = seed
+            var destination = 0
+            for page in almanach {
+                destination = transform(source: source, page: page)
+                source = destination
+            }
+            distance.append(destination)
+        }
+        i += 2
+    }
+    print("Distances: \(distance.count)")
+    return distance.min() ?? 666
 }
 
 struct Page {
