@@ -15,9 +15,11 @@ enum Day06 {
         let distance = lines[1].components(separatedBy: " ").compactMap { Int($0) }
         print("Time: ", time)
         print("Distance: ", distance)
-        let result = day06Part1(time: time, distance: distance)
-        print(result)
-        print(day06Part2(time: time, distance: distance))
+        let time2 = Int(lines[0].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0
+        let distance2 = Int(lines[1].components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? 0
+
+        print("Part 1: ", day06Part1(time: time, distance: distance))
+        print("Part 2: ", day06Part2(time: time2, distance: distance2))
     }
 }
 
@@ -40,7 +42,9 @@ func day06Part1(time: [Int], distance: [Int]) -> Int {
     return winningDistances.reduce(1,*)
 }
 
-func day06Part2(time: [Int], distance: [Int]) -> Int {
-    
-    return 2
+func day06Part2(time: Int, distance: Int) -> Int {
+    var winningDistances = [Int]()
+        winningDistances.append(countWinning(time: time).filter { $0 > distance }.count)
+        
+    return winningDistances.reduce(1,*)
 }
