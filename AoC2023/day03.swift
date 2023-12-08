@@ -11,7 +11,7 @@ import Foundation
 
 enum Day03 {
     static func run() {
-        let input1 = readFile("day03.input")
+        let input1 = readFile("day03.test")
         print(input1)
         let result = day03Part1(input1)
         print(result)
@@ -122,7 +122,7 @@ func day03Part1(_ input: String) -> Int {
     return sum
 }
 
-func day03Part2(_ input1: String) -> Int {
+func day03Part1AnotherSolution(_ input1: String) -> Int {
     let input = input1.lines
     var res = 0
     for (row, line) in input.enumerated() {
@@ -174,4 +174,60 @@ struct Part: CustomStringConvertible {
     var description: String {
         "(\(isConnected ? "T": "F"), \(isNumber ? "T": "F"), \(isSymbol ? "T": "F"), \(value))"
     }
+}
+
+func day03Part2(_ input1: String) -> Int {
+    let symbols = "!@#$%^&*+/=-"
+    var result = 0
+    let lines = input1.lines
+    let grid = lines.map { Array($0) }
+    print(grid)
+    for i in 0..<grid.count {
+        for j in 0..<grid[i].count {
+            let value = grid[i][j]
+            if symbols.contains(value) {
+                let numbers = areTwoNumbersAround(i: i, j: j, grid: grid)
+                if numbers.count == 2 {
+                    result += numbers[0]*numbers[1]
+                }
+            }
+        }
+    }
+    return result
+}
+
+func areTwoNumbersAround(i: Int, j: Int, grid: [[String.Element]]) -> [Int] {
+    var numbersAround: [Int] = []
+    for row in i-1...i+1 {
+        if row < 0 || row > grid.count {
+            continue
+        }
+        for col in j-1...j+1 {
+            var numberToAdd: String = ""
+            if col < 0 || col > grid.count {
+                continue
+            }
+            if grid[row][col].isNumber {
+                var search = col
+                while search > 0 && grid[row][search].isNumber   {
+                    search -= 1
+                }
+//                if search < 0 {
+//                    search = 0
+//                }
+                while search < grid.count && grid[row][search].isNumber  {
+                    print("I have found this number \(numberToAdd) and should add \(grid[row][search])")
+                    numberToAdd += String(grid[row][search])
+                    search += 1
+                }
+                if let number = Int(numberToAdd) {
+                    numbersAround.append(number)
+                }
+                print("I have added \(numberToAdd)")
+                numberToAdd = ""
+            }
+            
+        }
+    }
+    return numbersAround
 }

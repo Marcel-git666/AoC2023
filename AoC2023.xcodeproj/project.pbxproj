@@ -63,6 +63,7 @@
 		1F5997D72B1B88A00000A17A /* day02.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day02.input; sourceTree = "<group>"; };
 		1F5997D82B1B88A60000A17A /* day03.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day03.input; sourceTree = "<group>"; };
 		1F5997D92B1B88AD0000A17A /* day04.input */ = {isa = PBXFileReference; lastKnownFileType = text; path = day04.input; sourceTree = "<group>"; };
+		1FD7FBA02B2378D80061CC2E /* day08.test2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = day08.test2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +131,7 @@
 				1F2BEF622B223F3000DD9B8D /* day07.test */,
 				1F2BEF632B223F3A00DD9B8D /* day07.input */,
 				1F2BEF642B223F4B00DD9B8D /* day08.test */,
+				1FD7FBA02B2378D80061CC2E /* day08.test2 */,
 				1F2BEF652B223F5100DD9B8D /* day08.input */,
 			);
 			path = Resources;

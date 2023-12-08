@@ -77,3 +77,37 @@ public class TreeNode<T> {
         self.value = value
     }
 }
+
+public class Node<Value> {
+    public var value: Value
+    public var leftValue: Value
+    public var rightValue: Value
+    public var left: Node?
+    public var right: Node?
+    public init(value: Value, leftValue: Value, rightValue: Value, left: Node? = nil, right: Node? = nil) {
+        self.value = value
+        self.leftValue = leftValue
+        self.rightValue = rightValue
+        self.left = left
+        self.right = right
+    }
+}
+
+extension Node: Equatable where Value: Equatable {
+    public static func == (lhs: Node, rhs: Node) -> Bool {
+        return lhs.value == rhs.value && lhs.leftValue == rhs.leftValue && lhs.rightValue == rhs.rightValue
+    }
+}
+
+
+extension Node: CustomStringConvertible {
+    public var description: String {
+        guard let left = left else {
+            return "\(value)"
+        }
+        guard let right = right else {
+            return "\(value)"
+        }
+        return "\(value), (\(leftValue), \(rightValue)) -> " + String(describing: left) + ", " + String(describing: right) + " "
+    }
+}
