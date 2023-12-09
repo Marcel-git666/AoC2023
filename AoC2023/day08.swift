@@ -75,9 +75,9 @@ func day08Part1(_ instructions: [String], _ map: [Node<String>]) -> Int {
 func day08Part2(_ instructions: [String], _ map: [Node<String>]) -> Int {
     
     
-    var currentNodes = map.filter { $0.value.suffix(1) == "A" }
+    let currentNodes = map.filter { $0.value.suffix(1) == "A" }
     
-    var numberOfGhosts = currentNodes.count
+    let numberOfGhosts = currentNodes.count
     print("Ghosts: \(numberOfGhosts)")
     var ghostSteps: [Int] = []
 

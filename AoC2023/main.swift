@@ -16,6 +16,6 @@ import Foundation
 //Day05.run()
 //Day06.run()
 //Day07.run()
-Day08.run()
-//Day09.run()
+//Day08.run()
+Day09.run()
 //Day10.run()
