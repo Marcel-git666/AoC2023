@@ -272,3 +272,4 @@ struct Point: Hashable, CustomStringConvertible {
         return "[\(row)][\(col)]"
     }
 }
+

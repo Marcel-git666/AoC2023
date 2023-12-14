@@ -111,3 +111,17 @@ extension Node: CustomStringConvertible {
         return "\(value), (\(leftValue), \(rightValue)) -> " + String(describing: left) + ", " + String(describing: right) + " "
     }
 }
+
+
+func permuteWirth<T>(_ a: inout [T], _ n: Int) {
+    if n == 0 {
+        print(a)   // display the current permutation
+    } else {
+        permuteWirth(&a, n - 1)
+        for i in 0..<n {
+            a.swapAt(i, n)
+            permuteWirth(&a, n - 1)
+            a.swapAt(i, n)
+        }
+    }
+}
